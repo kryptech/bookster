@@ -1,0 +1,79 @@
+/***** OLD */
+/*
+.fieldList label, .fieldList input {
+	display: block;
+}
+*/
+
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+
+#container {
+	margin: .2em;
+}
+
+#popupContainer {
+	display: none;
+}
+
+#menuBar {
+	border-bottom: solid .1em gray;
+	margin-bottom: 1em;
+}
+
+#editBox {
+	display: none;
+}
+
+#list {
+	border-collapse: collapse;
+}
+#list th, #list td {
+	padding: .2em;
+	text-align: left;
+}
+
+#list thead tr {
+	border-bottom: solid .2em white;
+}
+
+#list tbody tr {
+	background: #aaa;
+	border-bottom: solid .2em white;
+}
+
+#list tbody tr:nth-child(even) {
+	background: #ccc;
+}
+
+/*
+.btnIcon {
+	width: 1.8em;
+	height: 1.8em;
+	border: solid 1px #000;
+	cursor: pointer;
+}
+.btnIcon:hover {
+	margin: -1px 1px 1px -1px;
+	box-shadow: 1px 1px 2px 0px #000;
+}
+.btnNew {
+	background: #ccc;
+}
+.btnSave {
+	background: green;
+}
+.btnEdit {
+	background: #ccc;
+}
+.btnDelete {
+	background: red;
+}
+.btnCancel {
+	background: red;
+}
+*/

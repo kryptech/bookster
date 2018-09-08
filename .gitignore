@@ -1,0 +1,8 @@
+.Notes/
+.vs/
+node_modules/
+
+_*
+
+config/db_LIVE.php
+config/db.php

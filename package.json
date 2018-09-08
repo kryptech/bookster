@@ -1,0 +1,30 @@
+{
+  "name": "bookster",
+  "version": "1.0.0",
+  "description": "Library web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kryptech/bookster.git"
+  },
+  "keywords": [
+    "library",
+    "catalogue",
+    "catalog",
+    "books",
+    "media"
+  ],
+  "author": "Chris M. Sissons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kryptech/bookster/issues"
+  },
+  "homepage": "https://github.com/kryptech/bookster#readme",
+  "dependencies": {
+    "angular-material": "^1.1.5",
+    "angular-route": "^1.6.9"
+  }
+}

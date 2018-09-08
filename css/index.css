@@ -1,0 +1,67 @@
+html,body {
+	height: 100%;
+}
+body {
+	overflow: scroll;
+	background-image: url('../images/desk-bg.jpg');
+	opacity: 0;
+	transition: opacity .4s;
+}
+#book {
+	position: relative;
+	min-height: 100%;
+	perspective: 2000px;
+}
+.page {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	min-height: 100%;
+	transform-origin: left;
+	transform: rotateY(0deg);
+	transition: transform 4s;
+	backface-visibility: hidden;
+}
+#splashPage, #splashPageB {
+	z-index: 9992;
+	color: white;
+	background-image: url('../images/book-cover-bg.jpg');
+}
+#splashPageB {
+	z-index: 9991;
+	transform: rotateY(1deg);
+	backface-visibility: visible;
+	box-shadow: inset 1em 0 2em -2em black;
+	background-image: url('../images/page-bg.jpg');
+}
+#mainPage {
+	z-index: 9990;
+	box-shadow: inset 1em 0 2em -2em black;
+	background-image: url('../images/page-bg.jpg');
+}
+header {
+	margin-bottom: 1em;
+	border-bottom: solid .1em gray;
+	/*background-image: url('../images/page-bg.jpg');
+	box-shadow: 0 .3em .3em -.4em rgba(0, 0, 0, .5);*/
+}
+.sticky-top {
+	background-image: url('../images/page-bg.jpg');
+	box-shadow: 0 .5em .5em -.6em rgba(0, 0, 0, .5);
+}
+.btn, [ng-click] {
+	cursor: pointer;
+}
+
+#msg:empty {
+	display: none;
+}
+.tblList.listElements tr td:first-child {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.toggle {
+	 width: 100% !important; /* To fix toggles cutting off text. */
+}

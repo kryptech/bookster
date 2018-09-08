@@ -1,0 +1,235 @@
+    <div class='sticky-top'>
+		
+        <header class='container'>
+
+            <div class='d-none d-sm-block col-12'>
+                <h1><i class='fa fa-bookmark'></i> Bookster</h1>
+            </div>
+
+            <nav id='menuBar' class='col-12' ng-controller='navController'>
+                
+                <div class='form-group row listElements collapse'>
+                    <div class='col-2 text-center'>
+                        <button id='new' class='btn btn-info' ng-click='newBook()'><i class='fa fa-plus-circle'></i><span class='d-none d-md-inline'> Add</span></button>
+                    </div>
+                    <div class='input-group col-8'>
+                        <label for='search' class='input-group-addon d-none d-sm-inline'><i class='fa fa-search'></i></label>
+                        <input id='search' class='form-control' placeholder='Search' ng-model='searchQuery' ng-change='searchQueryChanged()'>
+                        <button class='btn input-group-addon d-none d-sm-inline' ng-click='searchQuery = ""; searchQueryChanged()'><i class='fa fa-times'></i></button>
+                    </div>
+                    <div class='col-2 text-center'>
+                        <button class='btn btn-info' ng-click='logOut()'><i class='fa fa-sign-out'></i><span class='d-none d-md-inline'> Log Out</span></button>
+                    </div>
+                </div>
+                
+            </nav>
+            
+        </header>
+
+        <section class='container'>
+            
+            <form class='editElements col-12 collapse' ng-controller='bookFormController'>
+                <input id='userId' name='userId' type='hidden' ng-model='userId'>
+                <input id='bookId' name='bookId' type='hidden' ng-model='bookId'>
+
+                <div class='form-group row'>
+                    <label for='bookTitle' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Title:</label>
+                    <input id='bookTitle' name='bookTitle' type='text' ng-model='bookTitle' required tabindex='1' class='form-control col-12 col-sm-6 col-md-3'>
+
+                    <label for='authorName' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Author:</label>
+                    <input id='authorName' name='authorName' type='text' ng-model='authorName' class='form-control col-12 col-sm-6 col-md-3'
+                    uib-typeahead='author for author in authorTA | filter:authorName' typeahead-min-length='2' autocomplete='off'>
+
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='seriesName' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Series:</label>
+                    <input id='seriesName' name='seriesName' type='text' ng-model='seriesName' class='form-control col-12 col-sm-6 col-md-3'
+                    uib-typeahead='seriesName for seriesName in seriesNameTA | filter:seriesName' typeahead-min-length='2' autocomplete='off'>
+
+                    <label for='seriesNumber' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'># in Series:</label>
+                    <input id='seriesNumber' name='seriesNumber' type='text' ng-model='seriesNumber' placeholder="e.g. 12" class='form-control col-12 col-sm-6 col-md-3'>
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='genre' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Genre:</label>
+                    <input type='text' id='genre' name='genre' ng-model='genre' class='form-control col-12 col-sm-6 col-md-3'
+                    uib-typeahead='genre for genre in genreTA| filter:genre' typeahead-min-length='2' autocomplete='off'>
+
+                    <label for='copies' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Copies:</label>
+                    <input type='number' id='copies' name='copies' ng-model='copies' required class='form-control col-12 col-sm-6 col-md-3'>
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='lentOutDate' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Lent Out On:</label>
+                    <input type='date' id='lentOutDate' name='lentOutDate' ng-model='lentOutDate' class='form-control col-12 col-sm-6 col-md-3'>
+
+                    <label for='lentOutTo' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Lent Out To:</label>
+                    <input type='text' id='lentOutTo' name='lentOutTo' ng-model='lentOutTo' class='form-control col-12 col-sm-6 col-md-3'>
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='keptWhere' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Book Location:</label>
+                    <input type='text' id='keptWhere' name='keptWhere' ng-model='keptWhere' class='form-control col-12 col-sm-6 col-md-3'>
+
+                    <label for='rating' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>My Rating:</label>
+                    <input type='range' id='rating' name='rating' min='1' max='5' step='1' ng-model='rating' class='form-control col-12 col-sm-6 col-md-3'>
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='haveRead' class='form-control-label col-12 col-sm-6 col-xl-3 text-sm-right'>I've Read This Book:</label>
+                    <div class='col-12 col-sm-6 col-xl-1 text-center'>
+                        <toggle ng-model='haveRead' on='<i class="fa fa-check-square-o"></i> Yes' off='<i class="fa fa-square-o"></i> No' onstyle='btn-primary' offstyle='btn-default'></toggle>
+                    </div>
+
+                    <label for='recommend' class='form-control-label col-12 col-sm-6 col-xl-3 text-sm-right'>On My Recommend List:</label>
+                    <div class='col-12 col-sm-6 col-xl-1 text-center'>
+                        <toggle ng-model='recommend' on='<i class="fa fa-check-square-o"></i> Yes' off='<i class="fa fa-square-o"></i> No' onstyle='btn-primary' offstyle='btn-default'></toggle>
+                    </div>
+
+                    <label for='wishList' class='form-control-label col-12 col-sm-6 col-xl-3 text-sm-right'>On My Wish List:</label>
+                    <div class='col-12 col-sm-6 col-xl-1 text-center'>
+                        <toggle ng-model='wishList' on='<i class="fa fa-check-square-o"></i> Yes' off='<i class="fa fa-square-o"></i> No' onstyle='btn-primary' offstyle='btn-default'></toggle>
+                    </div>
+                </div>
+                
+                <div class='form-group row'>
+                    <label for='yearPublished' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>Published:</label>
+                    <input type='number' id='yearPublished' name='yearPublished' ng-model='yearPublished' placeholder="YYYY" class='form-control col-12 col-sm-6 col-md-3'>
+
+                    <label for='isbn' class='form-control-label col-12 col-sm-6 col-md-3 text-sm-right'>ISBN:</label>
+                    <input type='text' id='isbn' name='isbn' ng-model='isbn' class='form-control col-12 col-sm-6 col-md-3'>
+                </div>
+                
+                <div class='form-group row'>
+                    <div class='col-4 text-center'>
+                        <div class="btn-group">
+                            <button class='btn btn-success' ng-click='saveBook($event, "save")'><span class='d-none d-sm-inline'><i class='fa fa-thumbs-up'></i> </span>Save</button>
+                            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" ng-click='saveBook($event, "another")'><i class='fa fa-plus-circle'></i> Save &amp; Add Another</a>
+                                <a class="dropdown-item" ng-click='saveBook($event, "series")'><i class='fa fa-list'></i> Save &amp; Add Another in Series</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div ng-hide='!isNewBook' class='col-4 text-center ng-hide'>
+                        <button class='btn btn-success' ng-click='saveBook(true)'><span class='d-none d-sm-inline'><i class='fa fa-plus-circle'></i> </span>Save &amp; Add<span class='d-none d-sm-inline'> Another</span></button>
+                    </div>-->
+                    <div class='col-4 text-center'>
+                        <button class='btn btn-info' ng-click='closeBookForm()'><span class='d-none d-sm-inline'><i class='fa fa-times'></i> </span>Close</button>
+                    </div>
+                    <div class='col-4 text-center' ng-hide='isNewBook'>
+                        <button class='btn btn-danger' ng-click='deleteBook()'><span class='d-none d-sm-inline'><i class='fa fa-trash'></i> </span>Delete</button>
+                    </div>
+                </div>
+                
+                <hr>
+                
+            </form>
+        
+        </section>
+
+    </div><!-- .sticky-top -->
+
+    <section class='container'>
+            
+        <form class='pickUser col-12' ng-controller='userLoginController'>
+            
+            <div class='form-group row'>
+                <label for='email' class='form-control-label col-6 text-sm-right'>Email:</label>
+                <input name='email' type='email' ng-model='email' required tabindex='0' class='form-control col-6'>
+            </div>
+            
+            <div class='form-group row'>
+                <label for='password' class='form-control-label col-6 text-sm-right'>Password:</label>
+                <input name='password' type='password' ng-model='password' required class='form-control col-6'>
+            </div>
+            
+            <div class='form-group row'>
+                <label for='stayLoggedIn' class='form-control-label col-6 text-sm-right'>Stay Logged In:</label>
+                <!--<input name='stayLoggedIn' type='checkbox' ng-model='stayLoggedIn' ng-true-value='1' ng-false-value='0' class='form-control col-6'>-->
+                <div class='col-4 col-md-2 text-center'>
+                    <toggle ng-model='stayLoggedIn' on='<i class="fa fa-check-square-o"></i> Yes' off='<i class="fa fa-square-o"></i> No' onstyle='btn-primary' offstyle='btn-default'></toggle>
+                </div>
+            </div>
+            
+            <div class='col-12 text-right'>
+                <button id='login' class='btn btn-primary' ng-click='login()'><i class='fa fa-sign-in'></i> Login</button>
+            </div>
+            
+        </form>
+
+    </section>
+
+    <section class='container'>
+
+        <table class='tblList listElements col-12 table table-striped collapse' ng-controller='bookListController'>
+            <thead>
+                <tr>
+                    <!--<th>ID</th>-->
+                    <th>
+                        <span ng-click='sortReverse = (sortType == "bookTitle" ? !sortReverse : false); sortType = "bookTitle"'>Title</span>
+                        <span ng-show='sortType == "bookTitle" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "bookTitle" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th>
+                        <span ng-click='sortReverse = (sortType == "authorName" ? !sortReverse : false); sortType = "authorName"'>Author</span>
+                        <span ng-show='sortType == "authorName" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "authorName" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-md-table-cell'>
+                        <span ng-click='sortReverse = (sortType == "seriesName" ? !sortReverse : false); sortType = "seriesName"'>Series</span>
+                        <span ng-show='sortType == "seriesName" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "seriesName" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-lg-table-cell'>
+                        <span ng-click='sortReverse = (sortType == "seriesNumber" ? !sortReverse : false); sortType = "seriesNumber"'>Series&nbsp;#</span>
+                        <span ng-show='sortType == "seriesNumber" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "seriesNumber" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <!--<th>Published</th>
+                    <th>Copies</th>
+                    <th>Location Code</th>
+                    <th>Lent Out Date</th>
+                    <th>Lent Out To</th>
+                    <th>Location</th>
+                    <th>Rating</th>
+                    <th>Read It</th>
+                    <th>Recommend</th>
+                    <th>Wish List</th>-->
+                    <th class='d-none d-lg-table-cell'>
+                        <span ng-click='sortReverse = (sortType == "genre" ? !sortReverse : false); sortType = "genre"'>Genre</span>
+                        <span ng-show='sortType == "genre" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "genre" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-xl-table-cell'>ISBN</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat='book in Books | orderBy:sortType:sortReverse | filter:searchQuery'>
+                    <!--<td>{{book.bookId}}</td>-->
+                    <td ng-click='getBook(book.bookId)'>{{book.bookTitle}}</td>
+                    <td>{{book.authorName}}</td>
+                    <td class='d-none d-md-table-cell'>{{book.seriesName}}</td>
+                    <td class='d-none d-lg-table-cell'>{{book.seriesNumber}}</td>
+                    <!--<td>{{book.yearPublished}}</td>
+                    <td>{{book.copies}}</td>
+                    <td>{{book.locationCode}}</td>
+                    <td>{{book.lentOutDate}}</td>
+                    <td>{{book.lentOutTo}}</td>
+                    <td>{{book.keptWhere}}</td>
+                    <td>{{book.rating}}</td>
+                    <td>{{book.haveRead}}</td>
+                    <td>{{book.recommend}}</td>
+                    <td>{{book.wishList}}</td>-->
+                    <td class='d-none d-lg-table-cell'>{{book.genre}}</td>
+                    <td class='d-none d-xl-table-cell'>{{book.isbn}}</td>
+                    <td><button type='button' class='btn btn-danger' ng-click='deleteBook(book)'><i class='fa fa-trash'></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>

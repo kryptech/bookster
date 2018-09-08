@@ -1,0 +1,67 @@
+    <div class='sticky-top'>
+		
+        <header class='container' ng-controller='wishlistHeaderController'>
+
+            <div class='row'>
+
+                <div class='col-12 col-md-6'>
+                    <h4><i class='fa fa-bookmark'></i> Bookster</h4>
+                </div>
+
+                <div class='col-12 col-md-6 text-right'>
+                    <h4>Wish List for {{userName}}</h4>
+                </div>
+
+            </div>
+
+        </header>
+        
+    </div><!-- .sticky-top -->
+
+    <section class='container'>
+
+        <table class='tblList col-12 table table-striped' ng-controller='wishlistBookListController'>
+            <thead>
+                <tr>
+                    <th>
+                        <a href ng-click='sortReverse = (sortType == "bookTitle" ? !sortReverse : false); sortType = "bookTitle"'>Title</a>
+                        <span ng-show='sortType == "bookTitle" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "bookTitle" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th>
+                        <a href ng-click='sortReverse = (sortType == "authorName" ? !sortReverse : false); sortType = "authorName"'>Author</a>
+                        <span ng-show='sortType == "authorName" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "authorName" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-md-table-cell'>
+                        <a href ng-click='sortReverse = (sortType == "seriesName" ? !sortReverse : false); sortType = "seriesName"'>Series</a>
+                        <span ng-show='sortType == "seriesName" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "seriesName" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-lg-table-cell'>
+                        <a href ng-click='sortReverse = (sortType == "seriesNumber" ? !sortReverse : false); sortType = "seriesNumber"'>Series&nbsp;#</a>
+                        <span ng-show='sortType == "seriesNumber" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "seriesNumber" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-lg-table-cell'>
+                        <a href ng-click='sortReverse = (sortType == "genre" ? !sortReverse : false); sortType = "genre"'>Genre</a>
+                        <span ng-show='sortType == "genre" && !sortReverse' class='fa fa-caret-down'></span>
+                        <span ng-show='sortType == "genre" && sortReverse' class='fa fa-caret-up'></span>
+                    </th>
+                    <th class='d-none d-xl-table-cell'>ISBN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat='book in Books | orderBy:sortType:sortReverse | filter:searchQuery'>
+                    <td>{{book.bookTitle}}</td>
+                    <td>{{book.authorName}}</td>
+                    <td class='d-none d-md-table-cell'>{{book.seriesName}}</td>
+                    <td class='d-none d-lg-table-cell'>{{book.seriesNumber}}</td>
+                    <td class='d-none d-lg-table-cell'>{{book.genre}}</td>
+                    <td class='d-none d-xl-table-cell'>{{book.isbn}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+

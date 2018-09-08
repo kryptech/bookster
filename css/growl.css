@@ -1,0 +1,16 @@
+ .growl {
+	 position: absolute;
+	 left: 0;
+	 right: 0;
+	 top: 0;
+ 	 transition: margin-top .7s, opacity .7s;
+	 margin-top: -5%; opacity: 0; /* Initially hide off screen */
+ }
+ .growl-show {
+	 margin-top: 0 !important;
+	 opacity: 1 !important;
+ }
+ .growl > div {
+	 margin: auto; /* Center horizontally */
+	 box-shadow: 0em .2em .5em -.3em black;
+ }

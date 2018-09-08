@@ -1,0 +1,8 @@
+<?php
+class dbConfig {
+	public static $DB_HOST = 'your_host_e.g._localhost';
+	public static $DB_NAME = 'your_database_name';
+	public static $DB_USERNAME = 'enter_your_username';
+	public static $DB_PASSWORD = 'enter_your_password';
+}
+?>

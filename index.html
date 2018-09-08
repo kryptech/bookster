@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='booksterApp'>
+ 
+<head>
+	
+	<meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+	
+	<!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css' integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M' crossorigin='anonymous'>
+	
+	<!-- AngularJS Bootstrap Toggle -->
+	<link rel='stylesheet' href='libraries/angular-bootstrap-toggle/angular-bootstrap-toggle.min.css'>
+	
+	<link rel='stylesheet' href='libraries/ui-bootstrap/ui-bootstrap-custom-2.5.0-csp.css'>
+
+	<link rel='stylesheet' href='css/growl.css'>
+	<link rel='stylesheet' href='css/index.css?v=20180621'>
+	
+	<title>Bookster</title><!-- {TODO} Add ability to change the title -->
+	
+</head>
+
+<body>
+
+<div id='book' class='container'>
+
+	<div id='splashPage' class='page text-center'>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<h1 style="font-size: 400%"><i class='fa fa-bookmark'></i> Bookster</h1>
+	</div>
+
+	<div id='splashPageB' class='page text-center'></div>
+
+	<div id='mainPage' class='page' ng-controller='pageController'>
+
+		<div ng-view></div>
+
+	</div><!-- #mainPage -->
+
+</div><!-- #book.container -->
+
+</body>
+
+<!-- AngularJS -->
+<script src='libraries/angular/angular.min.js'></script>
+
+<!-- jQuery -->
+<script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
+
+<!-- Bootstrap -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js' integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4' crossorigin='anonymous'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js' integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1' crossorigin='anonymous'></script>
+
+<!-- AngularJS Bootstrap Toggle -->
+<script src='libraries/angular-bootstrap-toggle/angular-bootstrap-toggle.min.js'></script>
+
+<!-- AngularJS Typeahead -->
+<script src='libraries/angular-animate/angular-animate.min.js'></script><!-- {TODO} Is this still needed for ui.bootstrap? -->
+<script src='libraries/ui-bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js'></script>
+
+<!-- AngularJS Route -->
+<script src='libraries/angular-route/angular-route.min.js'></script>
+
+<!-- FontAwesome -->
+<script src='https://use.fontawesome.com/69053ecf91.js'></script>
+
+<script src='js/get-cookie-value.js'></script>
+<script src='js/growl.js'></script>
+
+<!-- App -->
+<script src='js/index.js'></script>
+<script src='js/services.js'></script>
+<script src='js/controllers.js'></script>
+
+</html>
